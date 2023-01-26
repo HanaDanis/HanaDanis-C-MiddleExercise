@@ -22,7 +22,7 @@ namespace TestProject2
             amazon.Pages.Home.SearchBar.Click();
             amazon.Pages.Results.GetResultsBy(new Dictionary<string, string>()
             { {"priceLowerThen","100"},
-              {"priceHighOrEqual","0"},
+              {"priceHighOrEqual","10"},
               {"freeShipping","True"}
            }
         );
