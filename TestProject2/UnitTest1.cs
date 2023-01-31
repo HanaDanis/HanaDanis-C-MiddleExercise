@@ -24,8 +24,7 @@ namespace TestProject2
             { {"priceLowerThen","100"},
               {"priceHighOrEqual","10"},
               {"freeShipping","true"}
-           }
-        );
+           });        
             Debug.Assert(true);
             Assert.Pass();
         }
