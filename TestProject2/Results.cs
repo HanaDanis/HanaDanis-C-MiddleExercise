@@ -29,7 +29,14 @@ namespace TestProject2
                         xpath += " and concat(descendant::span[@class = 'a-price-whole']//text() ,'.',descendant::span[@class='a-price-fraction']//text()) >= " + filter.Value;
                         break;
                     case "freeShipping":
-                        xpath += " and (ancestor::div[@class = 'a-section a-spacing-small a-spacing-top-small']//descendant::span[@class = 'a-color-base a-text-bold'])";
+                        if (filter.Value != null)
+                        {
+                            xpath += " and (ancestor::div[@class = 'a-section a-spacing-small a-spacing-top-small']//descendant::span[@class = 'a-color-base a-text-bold'])";
+                        }
+                        else
+                        {
+                            xpath += " and not (ancestor::div[@class = 'a-section a-spacing-small a-spacing-top-small']//descendant::span[@class = 'a-color-base a-text-bold'])";
+                        }
                         break;
                 }
             }
@@ -42,7 +49,6 @@ namespace TestProject2
                 string url = filterR.FindElement(By.XPath("//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']")).GetAttribute("href");
                 string price = filterR.Text;
                 results.Add(new Item(price, title, url));
-
             }
 
             return results;

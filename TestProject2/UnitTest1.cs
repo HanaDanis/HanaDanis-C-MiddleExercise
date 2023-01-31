@@ -7,23 +7,23 @@ namespace TestProject2
 {
     public class Tests
     {
-        
-        Amazon amazon = new Amazon(BrowserFactory.CreateBroser(BrowserFactory.Browser.Chrome));
+        IWebDriver driver;
         [SetUp]
         public void Setup()
         {
-
+            driver = BrowserFactory.CreateBroser(BrowserFactory.Browser.Chrome);
         }
 
         [Test]
         public void test()
         {
+            Amazon amazon = new Amazon(driver);
             amazon.Pages.Home.SearchBar.Text="mouse";
             amazon.Pages.Home.SearchBar.Click();
             amazon.Pages.Results.GetResultsBy(new Dictionary<string, string>()
             { {"priceLowerThen","100"},
-              {"priceHighOrEqual","0"},
-              {"freeShipping","True"}
+              {"priceHighOrEqual","10"},
+              {"freeShipping","true"}
            }
         );
             Debug.Assert(true);
